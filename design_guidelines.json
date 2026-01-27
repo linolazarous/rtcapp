@@ -1,0 +1,145 @@
+{
+  "identity": {
+    "name": "Right Tech Centre",
+    "tagline": "AI-Powered Tech Education Platform",
+    "aesthetic": "Premium Dark Tech",
+    "archetype": "Electric & Neon",
+    "vibe": "Futuristic, High-Performance, Immersive"
+  },
+  "typography": {
+    "headings": {
+      "family": "Unbounded, sans-serif",
+      "weights": ["700", "900"],
+      "tracking": "tight",
+      "usage": "Hero titles, Section headers, Feature names"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Paragraphs, UI elements, Data tables"
+    },
+    "mono": {
+      "family": "JetBrains Mono, monospace",
+      "usage": "Code snippets, Data values, Micro-labels"
+    }
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": {
+        "default": "#050505",
+        "paper": "#0A0A0A",
+        "subtle": "#121212"
+      },
+      "foreground": {
+        "default": "#FFFFFF",
+        "muted": "#A1A1AA",
+        "subtle": "#52525B"
+      },
+      "primary": {
+        "default": "#CCFF00",
+        "hover": "#B3E600",
+        "foreground": "#000000",
+        "gradient": "linear-gradient(135deg, #CCFF00 0%, #00FF66 100%)"
+      },
+      "accent": {
+        "default": "#39FF14",
+        "purple": "#7C3AED",
+        "cyan": "#06B6D4"
+      },
+      "border": {
+        "default": "#27272A",
+        "active": "#3F3F46"
+      },
+      "status": {
+        "success": "#00FF66",
+        "warning": "#FACC15",
+        "error": "#FF3B30",
+        "info": "#3B82F6"
+      }
+    },
+    "gradients": {
+      "brand": "bg-gradient-to-r from-[#CCFF00] to-[#00FF66]",
+      "dark_overlay": "bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505]",
+      "glow": "radial-gradient(circle at center, rgba(204, 255, 0, 0.15) 0%, transparent 70%)"
+    }
+  },
+  "layout": {
+    "spacing_scale": "generous",
+    "container": {
+      "maxWidth": "1400px",
+      "padding": "2rem"
+    },
+    "grid_system": {
+      "marketing": "Bento Grid (Tetris Mode) - Asymmetrical, varied spans",
+      "dashboard": "High Density Grid - Compact, data-focused"
+    },
+    "border_radius": {
+      "default": "0px",
+      "buttons": "9999px",
+      "cards": "0px"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#CCFF00] text-black hover:bg-[#B3E600] font-bold rounded-full px-8 py-4 transition-transform hover:scale-105 active:scale-95",
+      "secondary": "bg-transparent border border-[#3F3F46] text-white hover:border-[#CCFF00] hover:text-[#CCFF00] rounded-full px-8 py-4",
+      "ghost": "text-[#A1A1AA] hover:text-white hover:bg-white/5 rounded-lg px-4 py-2"
+    },
+    "cards": {
+      "style": "bg-[#0A0A0A] border border-[#27272A] hover:border-[#CCFF00]/50 transition-colors duration-300",
+      "marketing": "relative overflow-hidden group",
+      "dashboard": "p-6 flex flex-col h-full"
+    },
+    "inputs": {
+      "style": "bg-[#121212] border border-[#27272A] focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] rounded-none h-12 px-4 text-white placeholder:text-[#52525B]"
+    }
+  },
+  "visual_enhancers": {
+    "noise": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+    "glassmorphism": "backdrop-blur-xl bg-black/60 border-b border-white/10",
+    "glow_effects": "shadow-[0_0_20px_rgba(204,255,0,0.1)]"
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "/hero-bg.mp4",
+      "logo": "/logo.webp",
+      "features": {
+        "coding_environment": "https://images.unsplash.com/photo-1753998941587-5befe71f4572?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHw0fHxzdHVkZW50JTIwY29kaW5nJTIwbGFwdG9wJTIwZGFyayUyMGVudmlyb25tZW50fGVufDB8fHx8MTc2OTQ5NTc5M3ww&ixlib=rb-4.1.0&q=85",
+        "ai_network": "https://images.unsplash.com/photo-1616765683164-5b7f13bafa31?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFpJTIwdGVjaG5vbG9neSUyMG5ldHdvcmslMjBncmVlbnxlbnwwfHx8fDE3Njk0OTU3OTh8MA&ixlib=rb-4.1.0&q=85",
+        "tech_office": "https://images.unsplash.com/photo-1760999896198-b7e780e42500?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjB0ZWNoJTIwb2ZmaWNlJTIwbmVvbiUyMGxpZ2h0aW5nfGVufDB8fHx8MTc2OTQ5NTc5NXww&ixlib=rb-4.1.0&q=85"
+      },
+      "testimonials": [
+        "https://images.pexels.com/photos/4709288/pexels-photo-4709288.jpeg",
+        "https://images.pexels.com/photos/6424589/pexels-photo-6424589.jpeg"
+      ]
+    },
+    "icons": "lucide-react"
+  },
+  "libraries": {
+    "animation": "framer-motion",
+    "charts": "recharts",
+    "video": "react-player",
+    "toast": "sonner",
+    "utils": "clsx, tailwind-merge"
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Enforce DARK MODE globally. Do not implement a light mode toggle.",
+    "Use the 'Unbounded' font for all headings to give a distinct tech feel. Import it from Google Fonts.",
+    "Implement the 'Yellow -> Green' gradient on primary buttons and key accents.",
+    "Use the 'Bento Grid' layout for the dashboard overview.",
+    "Ensure the Hero section uses the video background (hero-bg.mp4) with a dark overlay for text readability.",
+    "Do not use generic 'Inter' for headings.",
+    "Add 'data-testid' to all interactive elements.",
+    "Use 'sonner' for notifications.",
+    "For the 'Course Catalog', use a card-based layout with hover effects that reveal more info.",
+    "The 'AI Tutor' chat interface should look like a modern messaging app (e.g., ChatGPT/Discord) but with the brand's dark/neon aesthetic."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI slop' aesthetics (generic centered layouts, standard Bootstrap look).",
+    "Use generous spacing (p-8, p-12) to create a premium feel.",
+    "Micro-interactions are mandatory (hover states, focus rings, active states).",
+    "Never use transparent backgrounds for dropdowns or overlays; use glassmorphism or solid dark colors.",
+    "Ensure accessibility: Text contrast must be high (White on Black, Black on Neon Green)."
+  ]
+}
