@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL + '/api';
@@ -18,21 +18,27 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('rtc_token'));
   const [loading, setLoading] = useState(true);
 
-  const api = axios.create({
-    baseURL: API_URL,
-    headers: token ? { Authorization: `Bearer ${token}` } : {}
-  });
-
-  useEffect(() => {
-    if (token) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-    } else {
-      delete api.defaults.headers.Authorization;
-    }
-  }, [token]);
+  // Create API instance with useMemo to ensure it updates when token changes
+  const api = useMemo(() => {
+    const instance = axios.create({
+      baseURL: API_URL,
+    });
+    
+    // Add request interceptor to always include latest token
+    instance.interceptors.request.use((config) => {
+      const currentToken = localStorage.getItem('rtc_token');
+      if (currentToken) {
+        config.headers.Authorization = `Bearer ${currentToken}`;
+      }
+      return config;
+    });
+    
+    return instance;
+  }, []);
 
   const fetchUser = useCallback(async () => {
-    if (!token) {
+    const currentToken = localStorage.getItem('rtc_token');
+    if (!currentToken) {
       setLoading(false);
       return;
     }
@@ -41,11 +47,14 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
     } catch (error) {
       console.error('Failed to fetch user:', error);
-      logout();
+      // Clear invalid token
+      localStorage.removeItem('rtc_token');
+      setToken(null);
+      setUser(null);
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [api]);
 
   useEffect(() => {
     fetchUser();
