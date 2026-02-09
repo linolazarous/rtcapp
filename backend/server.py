@@ -406,7 +406,8 @@ async def create_enrollment(enrollment: EnrollmentCreate, user: Dict = Depends(r
     await db.enrollments.insert_one(enrollment_doc)
     await db.courses.update_one({"id": enrollment.course_id}, {"$inc": {"enrolled_count": 1}})
     
-    del enrollment_doc["_id"] if "_id" in enrollment_doc else None
+    if "_id" in enrollment_doc:
+        del enrollment_doc["_id"]
     return enrollment_doc
 
 @enrollments_router.put("/{enrollment_id}/progress")
