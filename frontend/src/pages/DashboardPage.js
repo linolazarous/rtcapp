@@ -122,7 +122,8 @@ export default function DashboardPage() {
 
   const handleConnectGitHub = async () => {
     try {
-      const response = await api.get("/auth/github");
+      const redirectUri = `${window.location.origin}/auth/github/callback`;
+      const response = await api.get(`/auth/github?redirect_uri=${encodeURIComponent(redirectUri)}`);
       window.location.href = response.data.url;
     } catch (error) {
       toast.error("Failed to connect GitHub");
