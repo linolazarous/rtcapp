@@ -332,7 +332,8 @@ async def create_course(course: CourseCreate, user: Dict = Depends(require_instr
     }
     
     await db.courses.insert_one(course_doc)
-    del course_doc["_id"] if "_id" in course_doc else None
+    if "_id" in course_doc:
+        del course_doc["_id"]
     return course_doc
 
 @courses_router.put("/{course_id}", response_model=CourseResponse)
