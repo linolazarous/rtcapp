@@ -19,16 +19,25 @@ const LoginPage = () => {
     password: ''
   });
 
-  const from = location.state?.from || '/dashboard';
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await login(formData.email, formData.password);
+      const userData = await login(formData.email, formData.password);
       toast.success('Welcome back!');
-      navigate(from, { replace: true });
+      
+      // Redirect based on user role
+      const from = location.state?.from;
+      if (from) {
+        navigate(from, { replace: true });
+      } else if (userData.role === 'admin') {
+        navigate('/admin', { replace: true });
+      } else if (userData.role === 'instructor') {
+        navigate('/instructor', { replace: true });
+      } else {
+        navigate('/dashboard', { replace: true });
+      }
     } catch (error) {
       console.error('Login error:', error);
       toast.error(error.response?.data?.detail || 'Invalid credentials');
