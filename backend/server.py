@@ -760,7 +760,8 @@ async def generate_certificate(
     }
     
     await db.certificates.insert_one(certificate_doc)
-    del certificate_doc["_id"] if "_id" in certificate_doc else None
+    if "_id" in certificate_doc:
+        del certificate_doc["_id"]
     return certificate_doc
 
 # ==================== USERS ROUTES (Admin) ====================
