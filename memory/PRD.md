@@ -12,8 +12,8 @@ Build an autonomous AI software engineering platform called "CursorCode AI" that
 ## Architecture
 ```
 /app/backend/
-  server.py              - Main FastAPI app (all routes, auth, CRUD)
-  ai_agents.py           - Multi-agent AI system (Architect, Frontend, Backend, Security, QA, DevOps)
+  server.py              - Main FastAPI app (all routes, auth, CRUD, templates)
+  ai_agents.py           - Multi-agent AI system (6 agents)
   orchestrator.py        - AI project orchestration pipeline
   ai_memory.py           - AI context memory (MongoDB-backed)
   ai_streaming.py        - SSE streaming for AI responses
@@ -21,8 +21,8 @@ Build an autonomous AI software engineering platform called "CursorCode AI" that
   ai_rate_limiter.py     - Plan-based rate limiting
   ai_security.py         - Prompt validation & code sanitization
   ai_file_manager.py     - Generated project file management
-  ai_repo_builder.py     - Repository construction from AI output
-  ai_planner.py          - Task planning from user prompts
+  ai_repo_builder.py     - Repository construction
+  ai_planner.py          - Task planning
   ai_task_graph.py       - Task dependency resolution
   code_executor.py       - Sandboxed Python/Node.js execution
   ai_code_reviewer.py    - AI code review
@@ -33,7 +33,8 @@ Build an autonomous AI software engineering platform called "CursorCode AI" that
   ai_project_architect.py - AI architecture generation
   utils.py               - Utility functions
 /app/frontend/src/
-  pages/                 - LandingPage, LoginPage, SignupPage, DashboardPage, ProjectPage, SettingsPage, PricingPage, AdminPage
+  pages/                 - LandingPage, LoginPage, SignupPage, DashboardPage, ProjectPage,
+                           SettingsPage, PricingPage, AdminPage, TemplatesPage
   components/            - Logo, Sidebar, DemoVideoModal, ui/ (shadcn)
   context/               - AuthContext
   lib/                   - api.js (axios instance)
@@ -47,6 +48,7 @@ Build an autonomous AI software engineering platform called "CursorCode AI" that
 - [x] GitHub OAuth login/signup
 - [x] User dashboard with sidebar navigation
 - [x] Project CRUD (create, list, view, edit, delete)
+- [x] **Project Templates Gallery** (8 templates: SaaS Dashboard, E-Commerce Store, Blog Platform, REST API Backend, Portfolio Website, Real-Time Chat, AI Assistant, Mobile App)
 - [x] AI code generation workspace with Monaco editor
 - [x] Multi-agent AI build pipeline (Architect -> Frontend/Backend -> Security -> QA -> DevOps)
 - [x] AI build endpoint with demo mode (fallback when XAI_API_KEY not set)
@@ -64,43 +66,36 @@ Build an autonomous AI software engineering platform called "CursorCode AI" that
 - [x] User profile update endpoint
 - [x] AI metrics tracking
 - [x] Code execution sandbox (Python/Node.js)
-- [x] Google OAuth callback page (route added)
 
 ### Mocked/Demo Mode
 - AI generation returns demo responses (needs XAI_API_KEY)
 - Stripe checkout returns demo URLs (needs STRIPE_SECRET_KEY)
 - Email sending skipped (needs SENDGRID_API_KEY)
 - GitHub OAuth returns error (needs GITHUB_OAUTH_CLIENT_ID/SECRET)
-
-## DB Schema
-- **users:** id, email, name, password_hash, plan, credits, credits_used, stripe_customer_id, stripe_subscription_id, is_admin, email_verified, verification_token, github_id, github_username, github_access_token, avatar_url, created_at
-- **projects:** id, user_id, name, description, prompt, status, files, tech_stack, deployed_url, deployment_id, github_repo, created_at, updated_at
-- **credit_usage:** id, user_id, project_id, model, credits_used, task_type, created_at
-- **deployments:** id, project_id, user_id, subdomain, status, url, files, logs, created_at, updated_at
-- **ai_memory:** user, prompt, architecture, frontend, backend, created
+- Watch Demo video shows "Coming Soon" placeholder (user to upload demo-video.mp4)
 
 ## API Endpoints
-- POST /api/auth/signup, /api/auth/login, /api/auth/refresh
-- GET /api/auth/me, /api/auth/verify-email, /api/auth/github
-- POST /api/auth/github/callback, /api/auth/resend-verification
-- PUT /api/users/me
-- GET/POST /api/projects, GET/PUT/DELETE /api/projects/:id
-- PUT /api/projects/:id/files
-- POST /api/ai/generate, /api/ai/build
-- GET /api/ai/models, /api/ai/stream
-- POST /api/deploy/:id
-- GET /api/deployments, /api/deployments/:id
-- DELETE /api/deployments/:id
-- GET /api/plans
-- POST /api/subscriptions/create-checkout, /api/subscriptions/webhook
-- GET /api/subscriptions/current
-- GET /api/admin/stats, /api/admin/users, /api/admin/usage
-- GET /api/health
+- Auth: POST /api/auth/signup, /api/auth/login, /api/auth/refresh, GET /api/auth/me, /api/auth/verify-email
+- GitHub: GET /api/auth/github, POST /api/auth/github/callback
+- User: PUT /api/users/me
+- Projects: GET/POST /api/projects, GET/PUT/DELETE /api/projects/:id, PUT /api/projects/:id/files
+- **Templates: GET /api/templates, GET /api/templates/:id, POST /api/templates/:id/create**
+- AI: POST /api/ai/generate, /api/ai/build, GET /api/ai/models, /api/ai/stream
+- Deploy: POST /api/deploy/:id, GET /api/deployments, /api/deployments/:id, DELETE /api/deployments/:id
+- Plans: GET /api/plans
+- Subscriptions: POST /api/subscriptions/create-checkout, /api/subscriptions/webhook, GET /api/subscriptions/current
+- Admin: GET /api/admin/stats, /api/admin/users, /api/admin/usage
+- Health: GET /api/health
 
 ## Test Credentials
 - email: test@cursorcode.ai, password: Test123456!
 
 ## Testing Status (March 17, 2026)
-- Backend: 16/16 tests passed (100%)
-- Frontend: All flows working (100%)
-- Test reports: /app/test_reports/iteration_3.json
+- Iteration 3: 16/16 backend, all frontend flows (core features)
+- Iteration 4: 17/17 backend, all frontend flows (templates feature)
+- All tests passing 100%
+
+## Pending
+- User to upload real demo-video.mp4 for Watch Demo modal
+- Configure real API keys (xAI, Stripe, SendGrid, GitHub) to activate integrations
+- Real file hosting for deployments (currently simulated)
