@@ -13,6 +13,7 @@ import {
   Import,
   Loader2,
   User,
+  Layers,
 } from "lucide-react";
 
 export default function Sidebar({
@@ -29,6 +30,7 @@ export default function Sidebar({
 
   const navItems = [
     { path: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+    { path: "/templates", icon: Layers, label: "Templates" },
     { path: "/settings", icon: Settings, label: "Settings" },
   ];
 

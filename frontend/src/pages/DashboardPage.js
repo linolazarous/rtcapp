@@ -384,7 +384,7 @@ export default function DashboardPage() {
                   <FolderOpen className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
                   <h3 className="font-outfit text-xl text-white mb-2">No projects yet</h3>
                   <p className="text-zinc-400 mb-6">
-                    Create your first project or import from GitHub
+                    Create your first project or start from a template
                   </p>
                   <div className="flex items-center justify-center gap-4">
                     <Button
@@ -393,6 +393,15 @@ export default function DashboardPage() {
                     >
                       <Plus className="w-4 h-4 mr-2" />
                       Create Project
+                    </Button>
+                    <Button
+                      onClick={() => navigate("/templates")}
+                      variant="outline"
+                      className="border-white/10 text-white hover:bg-white/5"
+                      data-testid="browse-templates-btn"
+                    >
+                      <Star className="w-4 h-4 mr-2" />
+                      Browse Templates
                     </Button>
                     {user?.github_username && (
                       <Button

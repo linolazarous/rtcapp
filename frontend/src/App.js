@@ -14,6 +14,7 @@ import PricingPage from "./pages/PricingPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import GitHubCallbackPage from "./pages/GitHubCallbackPage";
 import GoogleCallbackPage from "./pages/GoogleCallbackPage";
+import TemplatesPage from "./pages/TemplatesPage";
 
 // Protected Route Component
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -74,6 +75,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <SettingsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/templates"
+            element={
+              <ProtectedRoute>
+                <TemplatesPage />
               </ProtectedRoute>
             }
           />
