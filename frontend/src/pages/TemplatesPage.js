@@ -22,6 +22,7 @@ import {
   Zap,
   Star,
   Filter,
+  Eye,
 } from "lucide-react";
 
 const ICON_MAP = {
@@ -258,22 +259,38 @@ export default function TemplatesPage() {
                             <Zap className="w-3 h-3 text-electric" />
                             ~{template.estimated_credits} credits
                           </div>
-                          <Button
-                            size="sm"
-                            onClick={() => handleUseTemplate(template)}
-                            disabled={creating === template.id}
-                            className="bg-electric hover:bg-electric/90 text-white text-xs h-8 px-4 shadow-glow"
-                            data-testid={`use-template-${template.id}`}
-                          >
-                            {creating === template.id ? (
-                              <Loader2 className="w-3 h-3 animate-spin" />
-                            ) : (
-                              <>
-                                Use Template
-                                <ArrowRight className="w-3 h-3 ml-1" />
-                              </>
-                            )}
-                          </Button>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() =>
+                                navigate(
+                                  `/templates/${template.id}/preview`
+                                )
+                              }
+                              className="text-zinc-400 hover:text-white text-xs h-8 px-3"
+                              data-testid={`preview-template-${template.id}`}
+                            >
+                              <Eye className="w-3 h-3 mr-1" />
+                              Preview
+                            </Button>
+                            <Button
+                              size="sm"
+                              onClick={() => handleUseTemplate(template)}
+                              disabled={creating === template.id}
+                              className="bg-electric hover:bg-electric/90 text-white text-xs h-8 px-4 shadow-glow"
+                              data-testid={`use-template-${template.id}`}
+                            >
+                              {creating === template.id ? (
+                                <Loader2 className="w-3 h-3 animate-spin" />
+                              ) : (
+                                <>
+                                  Use Template
+                                  <ArrowRight className="w-3 h-3 ml-1" />
+                                </>
+                              )}
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </motion.div>

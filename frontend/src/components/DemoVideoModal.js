@@ -38,15 +38,15 @@ export default function DemoVideoModal({ isOpen, onClose }) {
           <div className="aspect-video bg-void relative">
             {!videoError ? (
               <video
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-black"
                 controls
                 autoPlay
+                muted
                 playsInline
                 onError={() => setVideoError(true)}
                 data-testid="demo-video"
               >
                 <source src="/demo-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
               </video>
             ) : (
               /* Placeholder when video is not available */

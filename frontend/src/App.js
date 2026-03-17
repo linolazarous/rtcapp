@@ -15,6 +15,7 @@ import VerifyEmailPage from "./pages/VerifyEmailPage";
 import GitHubCallbackPage from "./pages/GitHubCallbackPage";
 import GoogleCallbackPage from "./pages/GoogleCallbackPage";
 import TemplatesPage from "./pages/TemplatesPage";
+import TemplatePreviewPage from "./pages/TemplatePreviewPage";
 
 // Protected Route Component
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -83,6 +84,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <TemplatesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/templates/:templateId/preview"
+            element={
+              <ProtectedRoute>
+                <TemplatePreviewPage />
               </ProtectedRoute>
             }
           />
